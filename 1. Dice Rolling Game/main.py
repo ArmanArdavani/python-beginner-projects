@@ -1,8 +1,9 @@
 import random
 
 roll_count = 0
+
 while True:
-    # Ask for the dice roll
+    # Ask to roll
     while True:
         choice = input('Roll the dice? (y/n): ')
         if choice in ("y", "n"):
@@ -10,32 +11,21 @@ while True:
         else:
             print("Invalid Choice! Enter 'y' or 'n'.")
     
-    if choice == "y":
-        roll_count += 1
-    else:
+    if choice == "n":
         break
     
-    # Ask for number of dices, validate/handle ValueError and print the outcome
+    roll_count += 1
+    
+    # Ask how many dice, with validation
     while True:
         try:
-            number_of_dices = int(input('How many dices do you want to roll? '))
-            list_of_outcomes = []
-            for i in range(number_of_dices):
-                dice_outcome = random.randint(1,6)
-                list_of_outcomes.append(dice_outcome)
-
-            print(f"Roll Count: {roll_count}")
-            print(list_of_outcomes)
+            num_dice = int(input('How many dices do you want to roll? '))
+            if num_dice < 1:
+                print("Please enter at least 1.")
             break
-    
         except ValueError:
-            print("Enter a Valid integer.")
+            print("Please enter a valid integer.")
 
-
-
-
-
-
-    
-
-    
+    # Dice Roll logic 
+    outcome = [random.randint(1, 6) for i in range(num_dice)]
+    print(f"Roll #{roll_count}: {outcome}")

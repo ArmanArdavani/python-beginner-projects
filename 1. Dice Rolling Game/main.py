@@ -1,24 +1,38 @@
 import random
 
-number_of_dices = int(input("how many dices do you want to roll? "))
-roll_counter = 1
-
-def roll_dice(number_of_dices):
-    global roll_counter
-    list = []
-    for  roll in range(number_of_dices):
-        list.append(random.randint(1,6))
-    print(list)
-    print(f"roll count: {roll_counter}")
-    repeat = input("Roll the dice? (y/n): ").lower()
-    if repeat == "y":
-        roll_counter += 1 
-        roll_dice(number_of_dices)
-    elif repeat == "n":
-        print("Thanks For Playing")
+roll_count = 0
+while True:
+    # Ask for the dice roll
+    while True:
+        choice = input('Roll the dice? (y/n): ')
+        if choice in ("y", "n"):
+            break
+        else:
+            print("Invalid Choice! Enter 'y' or 'n'.")
+    
+    if choice == "y":
+        roll_count += 1
     else:
-        print("Invalid Choice!")        
-roll_dice(number_of_dices)
+        break
+    
+    # Ask for number of dices, validate/handle ValueError and print the outcome
+    while True:
+        try:
+            number_of_dices = int(input('How many dices do you want to roll? '))
+            list_of_outcomes = []
+            for i in range(number_of_dices):
+                dice_outcome = random.randint(1,6)
+                list_of_outcomes.append(dice_outcome)
+
+            print(f"Roll Count: {roll_count}")
+            print(list_of_outcomes)
+            break
+    
+        except ValueError:
+            print("Enter a Valid integer.")
+
+
+
 
 
 

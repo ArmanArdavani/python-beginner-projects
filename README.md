@@ -10,7 +10,7 @@ Make sure you have Python 3 installed, then:
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/python-projects.git
+git clone https://github.com/ArmanArdavani/python-beginner-projects.git
 cd python-projects
 
 # Run any project
@@ -25,7 +25,7 @@ No external dependencies are needed for most projects. Any that require a librar
 
 | # | Project | Difficulty | Description | Enhancements |
 |---|---------|------------|-------------|--------------|
-| 01 | [Dice Rolling Game](./dice_rolling_game/) | ⭐⭐ | Simulates rolling a pair of dice, asks to roll again | Roll counter |
+| 01 | [Dice Rolling Game](./1. Dice Rolling Game/) | ⭐⭐ | Simulates rolling a pair of dice, asks to roll again | Roll counter |
 | 02 | [Number Guessing Game](./number_guessing_game/) | ⭐⭐⭐ | Computer picks a number, player guesses with hints | Best score tracker |
 | 03 | [Rock Paper Scissors](./rock_paper_scissors/) | ⭐⭐⭐ | Classic RPS with emoji output | Win/loss/tie tally |
 | 04 | [QR Code Generator](./qr_code_generator/) | ⭐⭐⭐ | Generates a scannable QR code from any URL or text | — |

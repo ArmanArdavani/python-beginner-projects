@@ -14,7 +14,7 @@ git clone https://github.com/ArmanArdavani/python-beginner-projects.git
 cd python-beginner-projects
 
 # Run any project
-python dice_rolling_game/main.py
+python 1. Dice_Rolling_Game/main.py
 ```
 
 No external dependencies are needed for most projects. Any that require a library (e.g. QR Code Generator) will say so in that project's own README.

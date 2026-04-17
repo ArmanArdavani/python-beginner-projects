@@ -25,7 +25,7 @@ No external dependencies are needed for most projects. Any that require a librar
 
 | # | Project | Difficulty | Description | Enhancements |
 |---|---------|------------|-------------|--------------|
-| 01 | [Dice Rolling Game](./1.%20Dice%20Rolling%20Game/Dice_Rolling_Game/) | ⭐⭐ | Simulates rolling a pair of dice, asks to roll again | Roll counter |
+| 01 | [Dice Rolling Game](./1.%20Dice%20Rolling%20Game/Dice_Rolling_Game/) | ⭐⭐ | Simulates rolling a pair of dice, asks to roll again | Roll counter, Unlimited dice |
 | 02 | [Number Guessing Game](./2.%20Number%20Guessing%20Game/number_guessing_game/) | ⭐⭐⭐ | Computer picks a number, player guesses with hints | Best score tracker |
 | 03 | [Rock Paper Scissors](./3.%20Rock,%20Paper,%20Scissors%20Game/rock_paper_scissors/) | ⭐⭐⭐ | Classic RPS with emoji output | Win/loss/tie tally |
 | 04 | [QR Code Generator](./4.%20QR%20Code%20Generator%20/qr_code_generator/) | ⭐⭐⭐ | Generates a scannable QR code from any URL or text | — |

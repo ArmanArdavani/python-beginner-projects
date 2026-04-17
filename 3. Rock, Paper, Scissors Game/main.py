@@ -1,182 +1,125 @@
 import random
 
-computer_score = 0
+EMOJIS = {"r": "🪨", "p": "📃", "s": "✂️"}
+WINNING_COMBOS = {"r": "s", "s": "p", "p": "r"}
 
-user1_score = 0
-user1_wins = 0
-user1_loses = 0
-user1_ties = 0
-
-user2_score = 0
-user2_wins = 0
-user2_loses = 0
-user2_ties = 0
-
-EMOJIS = {"r": "🪨" , "p": "📃", "s": "✂️"}
 
 def display_choice(player_name, choice):
     print(f"{player_name} chose {EMOJIS[choice]}")
 
-# Ask for Two player mode or computer mode and Validate 
-while True:
-    game_mode = input('Two player or Play with computer? (two player/computer) ').lower()
-    if game_mode in ("two player", "computer"):
-        break
-    else:
-        print("Invalid Choice! please enter 'two player' or 'computer ")
 
-while True:
+def get_player_choice(player_name):
     while True:
-        # Get player 1 choice and Validate 
-        user1_choice = input('Player 1 | Rock, paper, scissors? (r/p/s): ')
-        if user1_choice in ("r", "p", "s"):
-            display_choice("Player 1", user1_choice) 
-            break
+        choice = input(f"{player_name} | Rock, paper, scissors? (r/p/s): ").strip().lower()
+        if choice in ("r", "p", "s"):
+            display_choice(player_name, choice)
+            return choice
+        print("Invalid choice! Please enter r, p, or s.")
+
+
+def get_result(choice1, choice2):
+    """Returns 1 if player1 wins, 2 if player2 wins, 0 if tie."""
+    if choice1 == choice2:
+        return 0
+    elif WINNING_COMBOS[choice1] == choice2:
+        return 1
+    else:
+        return 2
+
+
+def print_stats(name1, wins1, losses1, ties1, name2=None, wins2=None, losses2=None, ties2=None):
+    print(f"\n{name1} | Wins: {wins1}, Losses: {losses1}, Ties: {ties1}")
+    if name2:
+        print(f"{name2} | Wins: {wins2}, Losses: {losses2}, Ties: {ties2}")
+
+
+def play_two_player():
+    score1 = score2 = 0
+    wins1 = losses1 = ties1 = 0
+    wins2 = losses2 = ties2 = 0
+
+    while True:
+        choice1 = get_player_choice("Player 1")
+        choice2 = get_player_choice("Player 2")
+
+        result = get_result(choice1, choice2)
+
+        if result == 1:
+            print("Player 1 wins this round!")
+            score1 += 1
+            wins1 += 1
+            losses2 += 1
+        elif result == 2:
+            print("Player 2 wins this round!")
+            score2 += 1
+            wins2 += 1
+            losses1 += 1
         else:
-            print("Invalid Choice!")
-         
-        
+            print("It's a tie!")
+            ties1 += 1
+            ties2 += 1
 
-    # <<<Two player mode>>>
-    # Get player 2 choice and Validate
-    if game_mode == "two player":
-        while True:
-            user2_choice = input('player 2 | Rock, paper, scissors? (r/p/s): ')
-            if user2_choice in ("r", "p", "s"):
-                display_choice("Player 2", user2_choice)
-                break
-            else:
-                print("Invalid choice!")
-
-        # Logic of winning and losing 
-        if user1_choice == "r":
-            if user2_choice == "p":
-                print("Player 2 Won")
-                user2_score += 1
-                user1_loses += 1 
-                user2_wins += 1
-            elif user2_choice == "s":
-                print("Player 1 Won")
-                user1_score += 1
-                user1_wins += 1 
-                user2_loses += 1
-            else:
-                print("Draw")
-                user1_ties += 1
-                user2_ties += 1
-        
-        elif user1_choice == "p":
-            if user2_choice == "r":
-                print("Player 1 Won")
-                user1_score += 1
-                user1_wins += 1 
-                user2_loses += 1
-            elif user2_choice == "s":
-                print("Player 2 Won")
-                user2_score += 1
-                user1_loses += 1 
-                user2_wins += 1
-            else:
-                print("Draw")
-                user1_ties += 1
-                user2_ties += 1
-        
-        elif user1_choice == "s":
-            if user2_choice == "r":
-                print("Player 2 Won")
-                user2_score += 1
-                user1_loses += 1 
-                user2_wins += 1
-            elif user2_choice == "p":
-                print("Player 1 Won")
-                user1_score += 1
-                user1_wins += 1 
-                user2_loses += 1
-            else:
-                print("Draw")
-                user1_ties += 1
-                user2_ties += 1
-            
-        # logic of whoever ones 2/3 games wins + tally of user wins, loses and ties
-        if user1_score == 2:
-            print(f"Player 1 | Wins: {user1_wins}, Losses: {user1_loses}, Ties: {user1_ties}")
-            print(f"Player 2 | Wins: {user2_wins}, Losses: {user2_loses}, Ties: {user2_ties}")
-            print("Player 1 is the winner!")
+        if score1 == 2:
+            print_stats("Player 1", wins1, losses1, ties1, "Player 2", wins2, losses2, ties2)
+            print("🏆 Player 1 is the overall winner!")
+            break
+        elif score2 == 2:
+            print_stats("Player 1", wins1, losses1, ties1, "Player 2", wins2, losses2, ties2)
+            print("🏆 Player 2 is the overall winner!")
             break
 
-        elif user2_score == 2:
-            print(f"Player 1 | Wins: {user1_wins}, Losses: {user1_loses}, Ties: {user1_ties}")
-            print(f"Player 2 | Wins: {user2_wins}, Losses: {user2_loses}, Ties: {user2_ties}")
-            print("Player 2 is the winner!")
-            break
-            
 
+def play_vs_computer():
+    player_score = computer_score = 0
+    wins = losses = ties = 0
 
-    # <<<Computer mode>>>
-    elif game_mode == "computer":
-        # Generate computers random choice
-        list_of_options = ['r', 'p', 's'] 
-        computer_choice = random.choice(list_of_options)
+    while True:
+        player_choice = get_player_choice("Player")
+        computer_choice = random.choice(["r", "p", "s"])
         display_choice("Computer", computer_choice)
 
-        # Logic of winning and losing 
-        if user1_choice == "r":
-            if computer_choice == "p":
-                print("You lose")
-                computer_score += 1
-                user1_loses += 1 
-            elif computer_choice == "s":
-                print("You win")
-                user1_score += 1
-                user1_wins += 1 
-            else:
-                print("Draw")
-                user1_ties += 1
+        result = get_result(player_choice, computer_choice)
 
-        elif user1_choice == "p":
-            if computer_choice == "r":
-                print("You win")
-                user1_score += 1
-                user1_wins += 1
-            elif computer_choice == "s":
-                print("You lose")
-                computer_score += 1 
-                user1_loses += 1
-            else:
-                print("Draw")
-                user1_ties += 1
+        if result == 1:
+            print("You win this round!")
+            player_score += 1
+            wins += 1
+        elif result == 2:
+            print("Computer wins this round!")
+            computer_score += 1
+            losses += 1
+        else:
+            print("It's a tie!")
+            ties += 1
 
-        elif user1_choice == "s":
-            if computer_choice == "r":
-                print("You lose")
-                computer_score += 1
-                user1_loses += 1 
-            elif computer_choice == "p":
-                print("You win")
-                user1_score += 1
-                user1_wins += 1
-            else:
-                print("Draw")
-                user1_ties += 1
-
-        # logic of whoever ones 2/3 games wins + tally of user wins, loses and ties
-        if user1_score == 2:
-            print(f"Wins: {user1_wins}")
-            print(f"Losses: {user1_loses}")
-            print(f"Ties: {user1_ties}")
-            print("You are the winner!")
+        if player_score == 2:
+            print_stats("You", wins, losses, ties)
+            print("🏆 You are the overall winner!")
             break
-
         elif computer_score == 2:
-            print(f"Wins: {user1_wins}")
-            print(f"Losses: {user1_loses}")
-            print(f"Ties: {user1_ties}")
-            print("Computer is the winner!")
+            print_stats("You", wins, losses, ties)
+            print("💻 Computer is the overall winner!")
             break
-    else:
-        print("Game mode Invalid! (two player/computer) ")
-        break
 
-    user_continue = input("Continue? (y/n) ").strip().lower()
-    if user_continue != "y":
-        break
+
+def main():
+    while True:
+        game_mode = input("\nTwo player or Play with computer? (two player/computer): ").strip().lower()
+        if game_mode in ("two player", "computer"):
+            break
+        print("Invalid choice! Please enter 'two player' or 'computer'.")
+
+    while True:
+        if game_mode == "two player":
+            play_two_player()
+        else:
+            play_vs_computer()
+
+        again = input("\nPlay again? (y/n): ").strip().lower()
+        if again != "y":
+            print("Thanks for playing!")
+            break
+
+
+if __name__ == "__main__":
+    main()

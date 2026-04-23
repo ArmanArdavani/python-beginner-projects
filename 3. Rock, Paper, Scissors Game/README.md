@@ -43,3 +43,7 @@ rock-paper-scissors-game/
 - Functions and separation of concerns  
 - Dictionaries for game logic
 - The `if __name__ == "__main__"` pattern
+
+---
+
+*Part of Mosh Hamedani's Python Projects for Beginners course.*

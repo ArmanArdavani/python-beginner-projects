@@ -34,3 +34,7 @@ Enter the text or URL for the QR code (or press Enter to stop): https://github.c
 Enter the filename for this QR code: github
 QR code saved as github.png
 ```
+
+---
+
+*Part of Mosh Hamedani's Python Projects for Beginners course.*

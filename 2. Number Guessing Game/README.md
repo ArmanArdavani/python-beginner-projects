@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Number Guessing Game 🎯
 
 A command-line number guessing game written in Python. The computer picks a random number within a range you define, and you try to guess it before running out of attempts.

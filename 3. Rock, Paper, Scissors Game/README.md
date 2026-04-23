@@ -29,8 +29,12 @@ python main.py
 4. After each game, choose to play again or quit
 
 ## Project Structure
-rock-paper-scissors/
+
+```
+rock-paper-scissors-game/
 └── main.py
+└── README.md
+```
 
 
 ## What I Learned

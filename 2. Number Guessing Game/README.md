@@ -69,4 +69,3 @@ number-guessing-game/
 ---
 
 *Part of Mosh Hamedani's Python Projects for Beginners course.*
-=======

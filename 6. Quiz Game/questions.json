@@ -1,0 +1,21 @@
+{
+    "General Knowledge":[
+        {"question": "What is the largest ocean on Earth?", "options": ["a) Atlantic","b) Indian", "c) Pacific", "d) Arctic"], "answer": "c" },
+        {"question": "How many bones are in the adult human body?", "options": ["a) 106", "b) 206", "c) 306", "d) 406"], "answer": "b" }
+    ],
+    
+    "Science":[
+        {"question": "What planet is known as the Red Planet?", "options": ["a) Venus", "b) Jupiter", "c) Saturn", "d) Mars"], "answer": "d"},
+        {"question": "What gas do plants absorb from the atmosphere", "options": ["a) Oxygen", "b) Nitorgen", "c) Carbon Dioxide", "d) Hydrogen"], "answer": "c"}
+    ],
+
+    "History":[
+        {"question": "Who was the first person to walk on the Moon", "options": ["a) Buzz Aldrin", "b) Yuri Gagarin", "c) Neil Armstrong", "d) John Glenn"], "answer": "c"},
+        {"question": "In what year did World War II end?", "options": ["a) 1943", "b) 1944", "c) 1945", "d) 1946"], "answer": "c"}
+    ],
+
+    "Technology": [
+        {"question": "What does'CPU' stand for?", "options": ["a) Central Processing Unit", "b) Computer Personal Unit", "c) Central Program Utility", "d) Core Processing Unit"], "answer": "a"},
+        {"question": "Which company created the Python programming language?", "options": ["a) Microsoft", "b) Google", "c) Guido van Rossum", "d) Apple"], "answer": "c"}
+    ]
+}
